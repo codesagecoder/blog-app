@@ -1,0 +1,221 @@
+
+/*  font-family: Abel  */
+@font-face {
+    font-family: Abel;
+    src: url('./fonts/Abel/Abel-Regular.ttf');
+}
+
+/*  font-family: Anton  */
+@font-face {
+    font-family: Anton;
+    src: url('./fonts/Anton/Anton-Regular.ttf');
+}
+
+/*  font-family: Josefin  */
+@font-face {
+    font-family: Josefin;
+    src: url('./fonts/Josefin_Sans/JosefinSans-Regular.ttf');
+}
+
+/*  font-family: Lexend  */
+@font-face {
+    font-family: Lexend;
+    src: url('./fonts/Lexend_Deca/LexendDeca-Regular.ttf');
+}
+
+/*  font-family: Livvic  */
+@font-face {
+    font-family: Livvic;
+    src: url('./fonts/Livvic/Livvic-Regular.ttf');
+}
+
+:root{
+
+    /*      Theme colors        */
+    --text-gray: #3f4954;
+    --text-light : #686666da;
+    --bg-color: #0f0f0f;
+    --white: #ffffff;
+    --midnight: #104f55;
+
+    /* gradient color   */
+    --sky: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+    /*      theme font-family   */
+    --Abel: 'Abel', cursive;
+    --Anton: 'Anton', cursive;
+    --Josefin : 'Josefin', cursive;
+    --Lexend: 'Lexend', cursive;
+    --Livvic : 'Livvic', cursive;
+}
+
+
+/* ---------------- Global Classes ---------------*/
+
+a{
+    text-decoration: none;
+    color: var(--text-gray);
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+.flex-row{
+    display: flex;
+    flex-direction: row;    
+}
+
+ul{
+    list-style-type: none;
+}
+
+h1{
+    font-family: var(--Lexend);
+    font-size: 2.5rem;
+}
+
+h2{
+    font-family: var(--Lexend);
+}
+
+h3{
+    font-family: var(--Abel);
+    font-size: 1.3rem;
+}
+
+button.btn{
+    border: none;
+    border-radius: 2rem;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    font-family: var(--Livvic);
+    cursor: pointer;
+}
+
+span{
+    font-family: var(--Abel);
+}
+
+.container{
+    margin: 0 5vw;
+}
+
+.text-gray{
+    color: var(--text-gray);
+}
+
+p{
+    font-family: var(--Lexend);
+    color: var(--text-light);
+}
+
+main .post-content .post-title a{
+    font-family: var(--Anton);
+    font-size: 1.5rem;
+}
+
+/* ------x------- Global Classes -------x-------*/
+
+/*              Viewport less then or equal to 1130px            */
+
+/* @media only screen and (max-width: 1130px){
+    .site-content .post-content > .post-image .post-info{
+        left: 2rem !important;
+        bottom: 1.2rem !important;
+        border-radius: 0% !important;
+    }
+
+    .site-content .sidebar .popular-post .post-info{
+        display: none !important;
+    }
+
+    footer.footer .container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}  */
+
+/*      x       Viewport less then or equal to 1130px    x     */
+
+
+/*              Viewport less then or equal to 750px            */
+
+@media only screen and (max-width: 820px){
+    /* .nav .nav-menu, .nav .nav-items{
+        flex-direction: column;
+    } */
+
+    /* .nav .toggle-collapse{
+        display: initial;
+    } */
+    .post-info{
+        display: none !important;
+    }
+
+    main .site-content{
+        grid-template-columns: 100%;
+    }
+
+    footer.footer .container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    aside.sidebar{
+        display:none
+    }
+}
+
+
+/*        x      Viewport less then or equal to 750px       x     */
+
+@media only screen and (max-width: 670px){
+nav .topLeft{
+    flex: 4;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+    align-items:baseline;
+}
+
+nav .hamburger .button-hamburger{
+    margin: .5rem auto
+    /* margin-top: 1rem */
+
+
+}
+nav .hamburger{
+    display: block;
+}
+/* nav .hamburger ul{
+    display: block;
+    padding-left: 8%;
+    text-align: end;
+    transition: height 0.6s ease-in-out;
+} */
+
+nav .topRight, .topCenter{
+    display: none
+}
+}
+
+/*              Viewport less then or equal to 520px            */
+
+@media only screen and (max-width: 600px){
+    footer.footer .container > div{
+        padding:  1rem .9rem !important;
+    }
+
+    footer .rights{
+        padding: 0 1.4rem;
+        text-align: center;
+    }
+    .post-content .post-info > .category{
+        display:none
+    }
+    .post-content .post-info > *:first-child{
+        display:none
+    }
+
+}
+
+/*        x      Viewport less then or equal to 520px       x     */

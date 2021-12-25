@@ -1,0 +1,86 @@
+.topLeft,
+.topRight {
+  flex: 3;
+  display: flex;
+  align-items: center;
+}
+
+.topCenter {
+  flex: 6;
+}
+
+.hamburger {
+  display: none;
+}
+
+.topList {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topListItem {
+  margin-right: 20px;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.topListItem:hover {
+  color: gray;
+}
+
+.topImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+/* --------------- navbar ----------------- */
+
+.nav {
+  background-color: white;
+  padding: 0 2rem;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.nav .nav-items {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.nav-link {
+  padding: 1.6rem 1rem;
+  font-size: 1.1rem;
+  position: relative;
+  font-family: var(--Abel);
+  font-size: 1.1rem;
+}
+
+.nav-link:hover {
+  background-color: var(--midnight);
+}
+
+.nav-link:hover a {
+  color: var(--white);
+}
+
+.nav .nav-brand a {
+  font-family: var(--Lexend);
+  font-size: 1.6rem;
+}
+
+.topSearchIcon {
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+}

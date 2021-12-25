@@ -1,0 +1,29 @@
+.comment-unit {
+    display: grid;
+    /* grid-template-columns: 7% 7% 86%; */
+    grid-template-columns: 4rem 4rem calc(100% - 8rem);
+    align-items: center;
+    row-gap: .25rem;
+    margin-bottom: 15px;
+  }
+
+  .comment-unit > *:first-child {
+    grid-row-start:1; 
+    grid-row-end:5;
+    align-self:start
+  }
+
+  .comments-grid-full-width{
+    grid-column: 2 / span 3 ;
+  }
+  .comment-unit > *:last-child {
+    grid-column: 2 / span 3;
+    text-align: left;
+  }
+
+
+  .actions{
+    grid-column: 2 / span 3;
+    text-align: left;
+
+  }
