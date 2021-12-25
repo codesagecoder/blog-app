@@ -11,7 +11,7 @@ Might be slow on initial load.
 ## How to run the App
 
 #### Must have nodejs with npm installed (preferrably latest version).
-1. Download the app and open the folder in the cli
+1. Download/clone the repository and open the folder in the cli
 2. cd into the `/api` folder and Insall all the dependencies using `npm i` command
 3. Create a .env file with key `SECRET_KEY = YOUR_OWN_SECRET` for jwt authentication
 4. In the .env, you may if you have a mongodb database, setup another key `MONGO_URL = URL_TO_YOUR_DATABASE`
