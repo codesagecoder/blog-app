@@ -1,4 +1,4 @@
-## MERN video (movies/series) streaming app
+## MERN blog app
 
 A blogging web app for users to write about anything.
 
