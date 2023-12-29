@@ -19,13 +19,8 @@ app.use('/images', express.static(path.join(__dirname, "/images")))
 // app.use(express.static("images"));
 
 mongoose.connect(
-    process.env.MONGO_URL || 'mongodb://localhost:27017/blog',
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false
-    }).then(console.log("Connected to MongoDB")).catch(err => console.log(err))
+    process.env.MONGO_URL || 'mongodb://localhost:27017/blog')
+    .then(console.log("Connected to MongoDB")).catch(err => console.log(err))
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -35,7 +30,7 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storage })
+const upload = multer({ storage: storage, limits: { fileSize: 2000_000 /* 2MB */ } })
 
 app.post('/api/upload', verify, upload.single("file"), (req, res) => {
     res.status(200).json("File has been uploaded")
@@ -69,7 +64,7 @@ const io = require('socket.io')(appListen)
 io.on("connection", socket => {
     var room = socket.handshake['query']['postId'];
     socket.join(room);
-    
+
     socket.on('disconnect', function () {
         socket.leave(room)
     });
@@ -77,7 +72,7 @@ io.on("connection", socket => {
         socket.disconnect()
     });
     socket.on('editor', function (data) {
-        
+
         socket.to(room).emit('editor', data);
     });
 })
