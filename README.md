@@ -2,34 +2,32 @@
 
 A blogging web app for users to write about anything.
 
-## Demo
-
-Live demo hosted on heroku, [the-daily-blog.herokuapp.com](https://the-daily-blog.herokuapp.com/).
-Might be slow on initial load.
-#### Due to [restarts](https://devcenter.heroku.com/articles/active-storage-on-heroku) on heroku server, images uploaded to server are not permanent
+## Live demo [linode](https://the-daily-blog.herokuapp.com/)
 
 ## How to run the App
 
 #### Must have nodejs with npm installed (preferrably latest version).
 1. Download/clone the repository and open the folder in the cli
-2. cd into the `/api` folder and Insall all the dependencies using `npm i` command
-3. Create a .env file with key `SECRET_KEY = YOUR_OWN_SECRET` for jwt authentication
-4. In the .env, you may if you have a mongodb database, setup another key `MONGO_URL = URL_TO_YOUR_DATABASE`
-5. If not using mongodb cloud then download mongodb and install to run mongodb locally (instructions are on mongodb site)
-6. Launch the server with npm start command. The server will launch on port 8080.`npm i` command
-7. cd back into downloaded directory then cd into /client folder and Insall all the dependencies using `npm i` command
-8. Launch client side with npm start command, localhost:3000 will automatically open up in browser.
+2. cd into the `api` folder and install all the dependencies using `npm i` command
+3. Launch the server with `npm start` command. The server will launch on port 8080.
+4. Open a new terminal then cd into `client` folder and Insall all the dependencies using `npm i` command.
+5. Launch client side with `npm start` command, localhost:3000 will automatically open up in browser.
+
+#### Finally setup your environment values within the api server (.env):
+| Variable    | Description |
+|-------------| ----------- |
+| AES_KEY     | encryption key used to encrypt passwords|
+| SECRET_KEY  | JWT secret key|
+| MONGO_URL   | mongodb database uri|
 
 ## Features
 - REST api
-- Register and Login system
 - Fully responsive
-- JWT for session storage and authentication
-- State management with redux
-- Realtime (bi-directional) enganging commenting system
-- Upload files onto server [storage](https://devcenter.heroku.com/articles/active-storage-on-heroku)
+- Authentication
 - User settings
-- User writing component
+- File Uploading
+- Blog composer
+- Realtime (bi-directional) enganging commenting system
 
 
 ## Tools/Dependencies
