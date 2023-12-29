@@ -10,7 +10,7 @@ router.put("/:id", verify, async (req, res) => {
         if (req.body.password) {
             req.body.password = CryptoJS.AES.encrypt(
                 req.body.password,
-                process.env.SECRET_KEY
+                process.env.AES_KEY
             ).toString()
         }
         try {
