@@ -11,7 +11,7 @@ export default function Post({ post }) {
     //   </span>
     // ))}
     <div className="post-content">
-      <hr style={{width:'92%'}}/>
+      {/* <hr style={{width:'92%'}}/> */}
       <div className="post-image">
         <div>
           <img src={post?.photo} className="postImg" alt="" />
@@ -35,11 +35,11 @@ export default function Post({ post }) {
         <Link to={`/post/${post._id}`} className="link">
           {post.title}
         </Link>
-        <p>{post.content.slice(0,200)}...</p>
+        <p>{post.content.slice(0, 200)}...</p>
         <Link to={`/post/${post._id}`}>
-        <button className="btn post-btn">
-          Read More &nbsp; <i className="fas fa-arrow-right"></i>
-        </button>
+          <button className="btn post-btn">
+            Read More &nbsp; <i className="fas fa-arrow-right"></i>
+          </button>
         </Link>
       </div>
     </div>

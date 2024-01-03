@@ -1,11 +1,11 @@
 import "./write.css";
-import { userRequest,fileUpload } from "../../requestMethods";
+import { userRequest, fileUpload } from "../../requestMethods";
 import { useSelector } from "react-redux";
 import { useState, useRef } from "react";
 
 export default function Write() {
-  const titleRef = useRef("");
-  const contentRef = useRef("");
+  const titleRef = useRef(null);
+  const contentRef = useRef(null);
   const [file, setFile] = useState(null);
   const user = useSelector((state) => state.user.currentUser);
 
@@ -19,7 +19,7 @@ export default function Write() {
       categories: [],
     };
     if (file) {
-      newPost.photo = '/images/'+ await fileUpload(file)
+      newPost.photo = '/images/' + await fileUpload(file)
     }
     try {
       const res = await userRequest().post("/posts", newPost);

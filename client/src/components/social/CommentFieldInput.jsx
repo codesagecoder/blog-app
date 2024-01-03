@@ -1,7 +1,7 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField"
-import Container from "@material-ui/core/Container";
-import Button from "@material-ui/core/Button";
+import TextField from "@mui/material/TextField"
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
 import "./social.css";
 
 export class CommentFieldInput extends React.Component {

@@ -1,28 +1,34 @@
 import { useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { publicRequest } from '../../requestMethods';
 import "./register.css";
-import {publicRequest} from '../../requestMethods'
 
 export default function Register() {
-  const username = useRef("");
-  const email = useRef("");
-  const password = useRef("");
+  const usernameRef = useRef("");
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
   const [error, setError] = useState(false);
+  const nav = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(false);
+
+    const username = usernameRef.current;
+    const email = emailRef.current;
+    const password = passwordRef.current;
+
     try {
-      const rs = await publicRequest.post("/auth/register", {
-        username: username.current,
-        email: email.current,
-        password: password.current,
-      });
-      rs.data && window.location.replace("/login");
+      if (!username && !email && !password) throw Error('Missing fields.');
+
+      await publicRequest.post("/auth/register", { username, email, password });
+
+      nav('/login');
     } catch (err) {
-      console.log(err);
       setError(true);
     }
   };
+
   return (
     <div className="register">
       <span className="registerTitle">Register</span>
@@ -33,7 +39,7 @@ export default function Register() {
           type="text"
           placeholder="Enter your username..."
           onChange={(e) => {
-            username.current = e.target.value;
+            usernameRef.current = e.target.value;
           }}
         />
         <label>Email</label>
@@ -42,7 +48,7 @@ export default function Register() {
           type="text"
           placeholder="Enter your email..."
           onChange={(e) => {
-            email.current = e.target.value;
+            emailRef.current = e.target.value;
           }}
         />
         <label>Password</label>
@@ -51,15 +57,14 @@ export default function Register() {
           type="password"
           placeholder="Enter your password..."
           onChange={(e) => {
-            password.current = e.target.value;
+            passwordRef.current = e.target.value;
           }}
         />
         <button className="registerButton">Register</button>
       </form>
-      <a href="/login" className="link registerLoginButton" type="submit">
-        Login
-      </a>
-      {error && <span style={{marginTop:'10px',color:'red'}}>There was an error</span>}
+      <Link to='/login' className="link registerLoginButton">Login</Link>
+
+      {error && <span style={{ marginTop: '10px', color: 'red' }}>Something went wrong.</span>}
     </div>
   );
 }

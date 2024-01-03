@@ -1,6 +1,6 @@
 import * as React from "react";
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
 import { Link } from "react-router-dom";
 import "./topbar.css";
 
@@ -18,8 +18,9 @@ export default function Hamburger({ user }) {
   return (
     <div className="hamburger">
       <Button
+        disableRipple
         className="button-hamburger"
-        id="basic-button"
+        id="hamburger-button"
         aria-controls="basic-menu"
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
@@ -37,23 +38,35 @@ export default function Hamburger({ user }) {
         }}
       >
         {user ? (
-          <li onClick={handleClose} className="nav-link">
-            <Link
-              className="link"
-              to="/settings"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <img className="topImg" src={user.profilePic? PF + user.profilePic:PF+'no-user.jpg'} alt="" />
-              {user.username}
-            </Link>
-          </li>
+          [
+            <li key={0} onClick={handleClose} className="nav-link">
+              <Link
+                className="link"
+                to="/settings"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img className="topImg" src={user.profilePic ? PF + user.profilePic : PF + 'no-user.jpg'} alt="" />
+                {user.username}
+              </Link>
+            </li>,
+            <li key={1} onClick={handleClose} className="nav-link">
+              <Link className="link" to="/write">
+                Write
+              </Link>
+            </li>,
+            <li key={2} onClick={handleClose} className="nav-link">
+              <Link to={""} className="link">
+                Logout
+              </Link>
+            </li>
+          ]
         ) : (
-          
-            [<li key={0}onClick={handleClose} className="nav-link">
+          [
+            <li key={0} onClick={handleClose} className="nav-link">
               <Link className="link" to="/login">
                 Login
               </Link>
@@ -62,27 +75,8 @@ export default function Hamburger({ user }) {
               <Link className="link" to="/register">
                 Register
               </Link>
-            </li>]
-        )}
-        <li onClick={handleClose} className="nav-link">
-          <Link to="/">Categories</Link>
-        </li>
-        <li onClick={handleClose} className="nav-link">
-          <Link to="/">Authors</Link>
-        </li>
-        {user && (
-          <li onClick={handleClose} className="nav-link">
-            <Link className="link" to="/write">
-              Write
-            </Link>
-          </li>
-        )}
-        {user && (
-          <li onClick={handleClose} className="nav-link">
-            <Link to={""} className="link">
-              Logout
-            </Link>
-          </li>
+            </li>
+          ]
         )}
       </Menu>
     </div>

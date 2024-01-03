@@ -6,11 +6,8 @@ function Footer() {
       <div className="container">
         <div className="about-us" data-aos="fade-right" data-aos-delay="200">
           <h2>About us</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-            quia atque nemo ad modi officiis iure, autem nulla tenetur
-            repellendus.
-          </p>
+          <p>A blogging site that gives you freedom to write about anything and everything, weather it be your daily experiences or even your thoughts.</p>
+          <p>People Connecting via their daily thoughts and experiences!</p>
         </div>
         <div className="newsletter">
           <h2>Newsletter</h2>
@@ -46,7 +43,7 @@ function Footer() {
         </div>
       </div>
       <div className="rights flex-row">
-        <h4 className="text-gray">Copyright ©2021 All rights reserved</h4>
+        <h4 className="text-gray">Copyright ©2024 All rights reserved</h4>
       </div>
       <div
         className="move-up"

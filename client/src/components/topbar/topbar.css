@@ -5,12 +5,13 @@
   align-items: center;
 }
 
-.topCenter {
-  flex: 6;
+.topRight {
+  justify-content: flex-end;
+  margin: 0;
 }
 
-.hamburger {
-  display: none;
+.topCenter {
+  flex: 6;
 }
 
 .topList {
@@ -54,7 +55,7 @@
 
 .nav .nav-items {
   display: flex;
-  margin: 0 auto;
+  margin: 0 1rem;
   justify-content: center;
 }
 
@@ -83,4 +84,37 @@
   font-size: 18px;
   color: #666;
   cursor: pointer;
+}
+
+.hamburger {
+  display: none;
+}
+
+.button-hamburger:hover {
+  background: none !important;
+}
+
+@media only screen and (max-width: 670px) {
+
+  .topRight,
+  .topCenter {
+    display: none
+  }
+
+  .topLeft {
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger .button-hamburger {
+    height: 100%;
+    min-width: 0;
+    width: 14px;
+    padding: 0;
+    color: var(--text-gray);
+  }
 }

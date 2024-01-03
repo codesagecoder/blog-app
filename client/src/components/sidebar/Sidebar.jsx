@@ -8,16 +8,18 @@ export default function Sidebar() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const res = await publicRequest.get("/posts");
-      setPosts(res.data.slice(-3));
-    };
-    fetchPosts();
     const getCategories = async () => {
       const res = await publicRequest.get("/categories");
       setCategories(res.data);
     };
     getCategories();
+
+    const fetchPosts = async () => {
+      const res = await publicRequest.get("/posts");
+      setPosts(res.data);
+    };
+
+    fetchPosts();
   }, []);
   return (
     <aside className="sidebar">
@@ -26,7 +28,7 @@ export default function Sidebar() {
         {posts?.map((post, i) => (
           <div key={i} className="post-content">
             <div className="post-image">
-                <img src={post.photo} className="img-img" alt="blog" />
+              <img src={post.photo} className="img-img" alt="" />
               <div className="post-info flex-row">
                 <span>
                   <i className="fas fa-calendar-alt text-gray"></i>

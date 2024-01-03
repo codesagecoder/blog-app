@@ -9,7 +9,6 @@ export const userSlice = createSlice({
   },
   reducers: {
     loginStart: (state) => {
-      state.currentUser = null;
       state.pending = true;
       state.error = false
     },
@@ -24,9 +23,8 @@ export const userSlice = createSlice({
       state.error = true;
     },
     updateStart: (state) => {
-      state.currentUser = null;
       state.pending = true;
-      state.error = false
+      state.error = false;
     },
     updateSuccess: (state, action) => {
       const { accessToken } = state.currentUser;
@@ -44,7 +42,6 @@ export const userSlice = createSlice({
       state.error = false
     },
     setDefault: (state) => {
-      state.currentUser = state.currentUser ? { ...state.currentUser } : null;
       state.pending = false;
       state.error = false;
     },

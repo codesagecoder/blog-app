@@ -1,6 +1,8 @@
 .postImg {
   width: 100%;
-  object-fit: fill;
+  aspect-ratio: 1 / 1;
+  max-height: 450px;
+  object-fit: cover;
   background-color: #bebebe;
 }
 .post-content {

@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { logout } from "../../redux/userSlice";
+import Hamburger from "./Hamburger";
 import "./topbar.css";
-import Hamburger from "./Hamburger"
 
 export default function Topbar() {
   const user = useSelector((state) => state.user.currentUser);
@@ -17,41 +17,30 @@ export default function Topbar() {
     <nav className="nav">
       <div className="nav-menu flex-row">
         <div className="topLeft nav-brand">
-          <Link to="/">shaun</Link>
+          <Link to="/">Home</Link>
         </div>
 
         <div className="topCenter">
-          <ul className="nav-items">
-            <li className="nav-link">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="nav-link">
-              <Link to="/">Categories</Link>
-            </li>
-            <li className="nav-link">
-              <Link to="/">Authors</Link>
-            </li>
-            {user && (
+          {user && (
+            <ul className="nav-items">
               <li className="nav-link">
                 <Link className="link" to="/write">
                   Write
                 </Link>
               </li>
-            )}
-            {user && (
               <li onClick={handleLogout} className="nav-link">
                 <Link to={""} className="link">
                   Logout
                 </Link>
               </li>
-            )}
-          </ul>
+            </ul>
+          )}
         </div>
-        <Hamburger user={user}/>
+        <Hamburger user={user} />
         <div className="topRight">
           {user ? (
             <Link className="link" to="/settings">
-              <img className="topImg" src={user.profilePic? user.profilePic:'/images/no-user.jpg'} alt="" />
+              <img className="topImg" src={user.profilePic ? user.profilePic : '/images/no-user.jpg'} alt="" />
             </Link>
           ) : (
             <ul className="nav-items">

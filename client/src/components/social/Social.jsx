@@ -1,9 +1,10 @@
 import React from "react";
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";import "./social.css";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import {CommentFieldInput} from './CommentFieldInput';
 import {CommentUnit} from './CommentUnit'
 import { io } from "socket.io-client";
+import "./social.css";
 
 export default class Social extends React.Component {
   constructor(props) {

@@ -9,16 +9,20 @@ import { useLocation } from "react-router";
 export default function Homepage() {
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();
+
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await publicRequest.get("/posts"+search);
+      const res = await publicRequest.get("/posts" + search);
       setPosts(res.data);
     };
+
     fetchPosts();
   }, [search]);
+
   return (
     <>
       <Header />
+
       <div className="home">
         {posts.length === 0 ? (
           <span
@@ -34,7 +38,7 @@ export default function Homepage() {
         ) : (
           <Posts posts={posts} />
         )}
-        <Sidebar posts={posts}/>
+        <Sidebar />
       </div>
     </>
   );

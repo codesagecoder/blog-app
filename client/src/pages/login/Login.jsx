@@ -1,8 +1,10 @@
-import "./login.css";
-import { login } from "../../redux/apiCalls";
-import { setDefault } from "../../redux/userSlice";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { loginFailure, loginStart, loginSuccess, setDefault } from "../../redux/userSlice";
+import { publicRequest } from "../../requestMethods";
+import "./login.css";
+
 
 export default function Login() {
   const passwordRef = useRef();
@@ -11,19 +13,26 @@ export default function Login() {
   const { pending, error } = useSelector((state) => state.user);
 
   useEffect(() => {
-    //research this: no rerenders on certain reducers
     dispatch(setDefault());
-  });
+  }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(
-      {
-        username: usernameRef.current.value,
-        password: passwordRef.current.value,
-      },
-      dispatch
-    );
+
+    const username = usernameRef.current.value;
+    const password = passwordRef.current.value;
+
+    if (!username && !password) dispatch(loginFailure());
+    else {
+      dispatch(loginStart());
+      try {
+        const res = await publicRequest.post("/auth/login", { username, password });
+        dispatch(loginSuccess(res.data));
+      } catch (err) {
+        console.log({ err });
+        dispatch(loginFailure());
+      }
+    }
   };
 
   return (
@@ -45,17 +54,15 @@ export default function Login() {
           placeholder="Enter your password..."
         />
         <button disabled={pending} type="submit" className="loginButton">
-          Login
+          {pending ? 'Loading...' : 'Login'}
         </button>
         {error && (
-          <span style={{ marginTop: "10px", color: "red" }}>
+          <span style={{ marginTop: "10px", color: "red", textAlign: 'center' }}>
             You did something wrong
           </span>
         )}
       </form>
-      <a href="/register" className="link loginRegisterButton">
-        Register
-      </a>
+      <Link to='/register' className="link loginRegisterButton">Register</Link>
     </div>
   );
 }
