@@ -177,7 +177,7 @@ export default class Social extends React.Component {
           currentInstance={this.currentInstance}
           currentThis={this}
         />
-        <Box>{this.state.comments}</Box>
+        <Box marginTop={5}>{this.state.comments}</Box>
       </Container>
     );
   }

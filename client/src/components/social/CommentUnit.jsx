@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Avatar from '@mui/material/Avatar';
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import {CommentFieldInput} from './CommentFieldInput';
+import { CommentFieldInput } from './CommentFieldInput';
 import { format } from "timeago.js";
 import "./social.css";
 
@@ -49,6 +49,9 @@ export class CommentUnit extends React.Component {
   componentWillUnmount() {
     this === this.props.currentInstance.current &&
       (this.props.currentInstance.current = null);
+  }
+  componentDidUpdate() {
+
   }
   getSnapshotBeforeUpdate(prevProps, prevState) {
     if (this.props.comment.comment !== prevProps.comment.comment) {
@@ -133,38 +136,38 @@ export class CommentUnit extends React.Component {
                   Reply
                 </Button>
               )}
-              {(comment?.subcomments.length > 0||
+              {(comment?.subcomments.length > 0 ||
                 this.state.comments?.length > 0) && (
-                <Button
-                  onClick={() => {
-                    if (this.state.comments === null) {
-                      this.setState({
-                        ...this.state,
-                        comments: this.generateSub(
-                          this.props.comment.subcomments
-                        ),
-                        dispalySubSection: !this.state.dispalySubSection,
-                      });
-                    } else {
-                      this.setState({
-                        ...this.state,
-                        dispalySubSection: !this.state.dispalySubSection,
-                      });
-                    }
-                  }}
-                  size="small"
-                  color="primary"
-                >
-                  {this.state.dispalySubSection
-                    ? "Hide replies"
-                    : "View replies"}
-                  {this.state.dispalySubSection ? (
-                    <ArrowUpwardIcon fontSize="inherit" />
-                  ) : (
-                    <ArrowDownwardIcon fontSize="inherit" />
-                  )}
-                </Button>
-              )}
+                  <Button
+                    onClick={() => {
+                      if (this.state.comments === null) {
+                        this.setState({
+                          ...this.state,
+                          comments: this.generateSub(
+                            this.props.comment.subcomments
+                          ),
+                          dispalySubSection: !this.state.dispalySubSection,
+                        });
+                      } else {
+                        this.setState({
+                          ...this.state,
+                          dispalySubSection: !this.state.dispalySubSection,
+                        });
+                      }
+                    }}
+                    size="small"
+                    color="primary"
+                  >
+                    {this.state.dispalySubSection
+                      ? "Hide replies"
+                      : "View replies"}
+                    {this.state.dispalySubSection ? (
+                      <ArrowUpwardIcon fontSize="inherit" />
+                    ) : (
+                      <ArrowDownwardIcon fontSize="inherit" />
+                    )}
+                  </Button>
+                )}
             </>
           )}
         </div>

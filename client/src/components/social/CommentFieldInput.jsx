@@ -134,6 +134,7 @@ export class CommentFieldInput extends React.Component {
                 disabled={currentInstance.input === ""}
                 variant="outlined"
                 color="primary"
+                style={{marginTop:'1rem'}}
                 onClick={() => {
                   currentInstance.input = this.inputText.target.value;
                   currentInstance.submitComment.bind(this)();

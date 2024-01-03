@@ -18,9 +18,8 @@ export default function Write() {
       username: user.username,
       categories: [],
     };
-    if (file) {
-      newPost.photo = '/images/' + await fileUpload(file)
-    }
+    if (file) newPost.photo = await fileUpload(file);
+
     try {
       const res = await userRequest().post("/posts", newPost);
       window.location.replace("/post/" + res.data._id);

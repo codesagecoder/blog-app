@@ -29,8 +29,9 @@ export async function fileUpload(file) {
   data.append("name", filename);
   data.append("file", file);
   try {
-    await userRequest().post("/upload", data);
-    return filename
+    const { data: { url } } = await userRequest().post("/upload", data);
+    console.log({url});
+    return url;
   } catch (err) {
     console.log(err);
   }

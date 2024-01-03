@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
+import { useNavigate } from "react-router-dom";
 import "./singlePost.css";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -8,6 +9,7 @@ import Social from "../../components/social/Social";
 
 export default function SinglePost() {
   const location = useLocation();
+  const nav = useNavigate()
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
   const [editMode, setEditMode] = useState(false);
@@ -30,11 +32,15 @@ export default function SinglePost() {
 
   async function handleDelete() {
     try {
-      if (post?.photo?.slice(0, 5) !== "https") {
-        await userRequest().delete("/upload/" + post.photo.slice(8));
-      }
+      if (post?.photo) await userRequest().delete("/upload?path=" + post.photo);
+    } catch (err) {
+      // file does not exist
+      if(err?.response?.status !== 409) return;
+    }
+
+    try {
       await userRequest().delete("/posts/" + path);
-      window.location.replace("/");
+      nav('/');
     } catch (err) {
       console.log(err);
     }
