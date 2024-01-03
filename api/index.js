@@ -33,21 +33,22 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage, limits: { fileSize: 2000_000 /* 2MB */ } })
 
 app.post('/api/upload', verify, upload.single("file"), (req, res) => {
-    res.status(200).json("File has been uploaded")
+    res.status(200).json({ url: `/${req.file.destination}/${req.file.filename}` });
 })
 
-app.delete('/api/upload/:photoID', verify, async (req, res) => {
-    try {
-        req.params.photoID && fs.unlink('./images/user-content/' + req.params.photoID, (err) => {
-            if (err) {
-                console.error(err)
-                res.status(401).json('failed to delete.')
-            }
-            res.status(200).json("File has been removed")
-        })
-    } catch (err) {
-        console.log(err)
+app.delete('/api/upload', verify, async (req, res) => {
+    if (!req.query.path) {
+        return res.status(422).json('failed to delete.');
     }
+
+    fs.unlink(path.join(__dirname, req.query.path), (err) => {
+        if (err) {
+            res.status(409).json('failed to delete.');
+        }
+        else {
+            res.status(200).json("File has been removed");
+        }
+    });
 })
 
 app.use('/api/auth', authRoute);
