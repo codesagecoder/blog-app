@@ -1,3 +1,4 @@
+import hero from '../../assets/curtis-hystad-uc0AtPDQOEo-unsplash.jpg';
 import "./header.css";
 
 export default function Header() {
@@ -9,7 +10,7 @@ export default function Header() {
       </div>
       <img
         className="headerImg"
-        src="/images/home.jpeg"
+        src={hero}
         alt=""
       />
     </div>

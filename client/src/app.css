@@ -51,6 +51,12 @@
 
 /* ---------------- Global Classes ---------------*/
 
+main {
+  overflow: hidden;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
 a {
   text-decoration: none;
   color: var(--text-gray);
@@ -114,8 +120,8 @@ main .post-content .post-title a {
   font-family: var(--Anton);
   font-size: 1.5rem;
 }
-
 /* ------x------- Global Classes -------x-------*/
+
 
 /*              Viewport less then or equal to 1130px            */
 
@@ -169,8 +175,7 @@ main .post-content .post-title a {
 
 /*        x      Viewport less then or equal to 750px       x     */
 
-@media only screen and (max-width: 670px) {
-}
+@media only screen and (max-width: 670px) {}
 
 /*              Viewport less then or equal to 520px            */
 

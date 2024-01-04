@@ -42,7 +42,7 @@ function Layout() {
   return (
     <>
       <Topbar />
-      <main style={{ overflow: "hidden" }}>
+      <main>
         <Outlet />
       </main>
       <Footer />
