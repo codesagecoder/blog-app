@@ -2,7 +2,7 @@
 
 A blogging web app for users to write about anything.
 
-## Live demo [linode](https://the-daily-blog.herokuapp.com/)
+### Live Demo [Here](https://google.com)
 
 ## How to run the App
 
