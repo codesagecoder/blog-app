@@ -56,8 +56,14 @@ app.use('/api/users', userRoute);
 app.use('/api/posts', postsRoute);
 app.use('/api/categories', categoriesRoute);
 
-var appListen = app.listen(process.env.PORT || 3001, () => {
-    console.log('backend is running')
+/* PRODUCTION */
+const clientHandler = express.static(path.join(__dirname, "build"));
+app.use('/', clientHandler);
+app.use('/*', clientHandler);
+
+const port = process.env.PORT ?? 3001;
+var appListen = app.listen(port, () => {
+    console.log('backend is running on port ' + port);
 })
 
 const io = require('socket.io')(appListen)
