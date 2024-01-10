@@ -12,6 +12,7 @@ import Write from "./pages/write/Write";
 
 
 import "./app.css";
+import NotFound from "./pages/404";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -33,6 +34,7 @@ function App() {
             <Route path="/login" element={<Login />} />
           </Route>
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
