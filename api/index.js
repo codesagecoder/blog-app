@@ -55,6 +55,7 @@ app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/posts', postsRoute);
 app.use('/api/categories', categoriesRoute);
+app.use('/api', (_,res)=>res.sendStatus(404));
 
 /* PRODUCTION */
 const clientHandler = express.static(path.join(__dirname, "build"));
